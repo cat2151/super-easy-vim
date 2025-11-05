@@ -12,22 +12,10 @@ Windows対応のRust製TUIエディタです。以下のライブラリを使用
 - tui-textarea: テキストエリアウィジェット
 - crossterm: クロスプラットフォームターミナル操作
 
-## ビルド方法
-
-```bash
-cargo build
-```
-
-## 実行方法
+## クイックスタート
 
 ```bash
 cargo run
-```
-
-または、ファイルを指定して実行：
-
-```bash
-cargo run path/to/file.txt
 ```
 
 ## 基本操作
@@ -47,19 +35,21 @@ cargo run path/to/file.txt
   - `y` - ヤンク（コピー）
   - `d` - 削除
   - `Esc` - Normal Modeに戻る
-# 状況
-
-agentが実装中
 
 # 見通し
 
-最低限のtui-textareaのexampleの実装
+- 1つずつvim初心者向けの機能を追加していく
+  - 例
+    - ※随時簡単なものを上に。小さく始める。
+    - modeで全体の色を変更
+    - カーソル近くにmodeを表示
+    - normal mode : カーソル近くに insert : I key を表示。Iを目立たせる
+    - insert mode : カーソル近くに to normal mode : ESC key を表示。ESCを目立たせる
 
-そこに1つずつvim初心者向けの操作を追加
+- 備忘
+  - insert modeは日本語IMEが問題なく動作したことを確認した
 
-もし日本語IMEで困ったら、日本語IMEはスコープ外にする
-
-# agent用指示
+# 備忘、初手のagent用指示、これで生成したvim風TUIエディタが問題なく動作したことを確認した
 ```
 Windowsで動作するRust製のTUIエディタを作ってください。
 ratatui と tui-textarea と crossterm を使ってください。
