@@ -1,4 +1,4 @@
-Last updated: 2025-11-10
+Last updated: 2025-12-29
 
 # 開発状況生成プロンプト（開発者向け）
 
@@ -106,11 +106,13 @@ Last updated: 2025-11-10
 - .github/actions-tmp/.github/workflows/call-callgraph.yml
 - .github/actions-tmp/.github/workflows/call-daily-project-summary.yml
 - .github/actions-tmp/.github/workflows/call-issue-note.yml
+- .github/actions-tmp/.github/workflows/call-rust-windows-check.yml
 - .github/actions-tmp/.github/workflows/call-translate-readme.yml
 - .github/actions-tmp/.github/workflows/callgraph.yml
 - .github/actions-tmp/.github/workflows/check-recent-human-commit.yml
 - .github/actions-tmp/.github/workflows/daily-project-summary.yml
 - .github/actions-tmp/.github/workflows/issue-note.yml
+- .github/actions-tmp/.github/workflows/rust-windows-check.yml
 - .github/actions-tmp/.github/workflows/translate-readme.yml
 - .github/actions-tmp/.github_automation/callgraph/codeql-queries/callgraph.ql
 - .github/actions-tmp/.github_automation/callgraph/codeql-queries/codeql-pack.lock.yml
@@ -161,6 +163,7 @@ Last updated: 2025-11-10
 - .github/actions-tmp/generated-docs/project-overview-generated-prompt.md
 - .github/actions-tmp/generated-docs/project-overview.md
 - .github/actions-tmp/generated-docs/style.css
+- .github/actions-tmp/googled947dc864c270e07.html
 - .github/actions-tmp/issue-notes/10.md
 - .github/actions-tmp/issue-notes/11.md
 - .github/actions-tmp/issue-notes/12.md
@@ -202,38 +205,395 @@ Last updated: 2025-11-10
 - README.md
 - _config.yml
 - generated-docs/project-overview-generated-prompt.md
+- issue-notes/2.md
+- issue-notes/3.md
 - src/main.rs
 
 ## 現在のオープンIssues
-オープン中のIssueはありません
+## [Issue #3](../issue-notes/3.md): （user手作業）readmeをもっとコンパクトにするため、内容をグルーピングして別mdに切り分ける、例えばclaude生成結果を別mdに切り分ける
+[issue-notes/3.md](https://github.com/cat2151/super-easy-vim/blob/main/issue-notes/3.md)
+
+...
+ラベル: 
+--- issue-notes/3.md の内容 ---
+
+```markdown
+# issue （user手作業）readmeをもっとコンパクトにするため、内容をグルーピングして別mdに切り分ける、例えばclaude生成結果を別mdに切り分ける #3
+[issues #3](https://github.com/cat2151/super-easy-vim/issues/3)
+
+# なにが困るの？
+- readmeがパッと見で長くて目が滑る
+- readmeのうち、なにが重要か？がパッと見でわからない
+
+
+```
+
+## [Issue #2](../issue-notes/2.md): readmeに、easyな説明表示の案を追加する。あわせて着手優先度を整理する
+[issue-notes/2.md](https://github.com/cat2151/super-easy-vim/blob/main/issue-notes/2.md)
+
+...
+ラベル: 
+--- issue-notes/2.md の内容 ---
+
+```markdown
+# issue readmeに、easyな説明表示の案を追加する。あわせて着手優先度を整理する #2
+[issues #2](https://github.com/cat2151/super-easy-vim/issues/2)
+
+# easyな説明表示の案
+- 画面を2分割する
+- 左
+  - textarea
+- 右
+  - modeに応じた、次の一手を過激に派手に表示する
+- メリット
+  - vimのこれまでの課題であった、「次の一手がわからない」を対策する
+- デメリット
+  - 表示領域が狭くなる
+    - 対策、アプリ方針に従い、OKとする
+  - バルーンやポップアップ表示に比べて利便性や見た目の楽しさが減るリスクがある
+    - 対策、バルーンやポップアップは複雑で、検証結果が得られるまで時間がかかる可能性がある
+      - それよりはすぐこの方式で検証結果を得るほうがトータルで速い、と判断する
+
+# 着手優先度
+- 上記案を次に着手するのがよいと判断する
+- 実際には、
+  - 初手からいきなりagentに任せて、それをuserがみて検証してヒントにするか、
+  - 具体的に何を表示するかをlistし、一歩ずつやっていくか、
+  - agentにplanさせるか
+  - を試す。planが無難かもしれない
+
+# readmeの整理
+- 上記をreadmeに反映、あるいはroadmap.md的なものをつくり、readme先頭からlinkか
+
+
+```
 
 ## ドキュメントで言及されているファイルの内容
+### .github/actions-tmp/issue-notes/2.md
+```md
+{% raw %}
+# issue GitHub Actions「関数コールグラフhtmlビジュアライズ生成」を共通ワークフロー化する #2
+[issues #2](https://github.com/cat2151/github-actions/issues/2)
 
+
+# prompt
+```
+あなたはGitHub Actionsと共通ワークフローのスペシャリストです。
+このymlファイルを、以下の2つのファイルに分割してください。
+1. 共通ワークフロー       cat2151/github-actions/.github/workflows/callgraph_enhanced.yml
+2. 呼び出し元ワークフロー cat2151/github-actions/.github/workflows/call-callgraph_enhanced.yml
+まずplanしてください
+```
+
+# 結果
+- indent
+    - linter？がindentのエラーを出しているがyml内容は見た感じOK
+    - テキストエディタとagentの相性問題と判断する
+    - 別のテキストエディタでsaveしなおし、テキストエディタをreload
+    - indentのエラーは解消した
+- LLMレビュー
+    - agent以外の複数のLLMにレビューさせる
+    - prompt
+```
+あなたはGitHub Actionsと共通ワークフローのスペシャリストです。
+以下の2つのファイルをレビューしてください。最優先で、エラーが発生するかどうかだけレビューしてください。エラー以外の改善事項のチェックをするかわりに、エラー発生有無チェックに最大限注力してください。
+
+--- 共通ワークフロー
+
+# GitHub Actions Reusable Workflow for Call Graph Generation
+name: Generate Call Graph
+
+# TODO Windowsネイティブでのtestをしていた名残が残っているので、今後整理していく。今はWSL act でtestしており、Windowsネイティブ環境依存問題が解決した
+#  ChatGPTにレビューさせるとそこそこ有用そうな提案が得られたので、今後それをやる予定
+#  agentに自己チェックさせる手も、セカンドオピニオンとして選択肢に入れておく
+
+on:
+  workflow_call:
+
+jobs:
+  check-commits:
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.check.outputs.should-run }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 50 # 過去のコミットを取得
+
+      - name: Check for user commits in last 24 hours
+        id: check
+        run: |
+          node .github/scripts/callgraph_enhanced/check-commits.cjs
+
+  generate-callgraph:
+    needs: check-commits
+    if: needs.check-commits.outputs.should-run == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      security-events: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set Git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove old CodeQL packages cache
+        run: rm -rf ~/.codeql/packages
+
+      - name: Check Node.js version
+        run: |
+          node .github/scripts/callgraph_enhanced/check-node-version.cjs
+
+      - name: Install CodeQL CLI
+        run: |
+          wget https://github.com/github/codeql-cli-binaries/releases/download/v2.22.1/codeql-linux64.zip
+          unzip codeql-linux64.zip
+          sudo mv codeql /opt/codeql
+          echo "/opt/codeql" >> $GITHUB_PATH
+
+      - name: Install CodeQL query packs
+        run: |
+          /opt/codeql/codeql pack install .github/codeql-queries
+
+      - name: Check CodeQL exists
+        run: |
+          node .github/scripts/callgraph_enhanced/check-codeql-exists.cjs
+
+      - name: Verify CodeQL Configuration
+        run: |
+          node .github/scripts/callgraph_enhanced/analyze-codeql.cjs verify-config
+
+      - name: Remove existing CodeQL DB (if any)
+        run: |
+          rm -rf codeql-db
+
+      - name: Perform CodeQL Analysis
+        run: |
+          node .github/scripts/callgraph_enhanced/analyze-codeql.cjs analyze
+
+      - name: Check CodeQL Analysis Results
+        run: |
+          node .github/scripts/callgraph_enhanced/analyze-codeql.cjs check-results
+
+      - name: Debug CodeQL execution
+        run: |
+          node .github/scripts/callgraph_enhanced/analyze-codeql.cjs debug
+
+      - name: Wait for CodeQL results
+        run: |
+          node -e "setTimeout(()=>{}, 10000)"
+
+      - name: Find and process CodeQL results
+        run: |
+          node .github/scripts/callgraph_enhanced/find-process-results.cjs
+
+      - name: Generate HTML graph
+        run: |
+          node .github/scripts/callgraph_enhanced/generate-html-graph.cjs
+
+      - name: Copy files to generated-docs and commit results
+        run: |
+          node .github/scripts/callgraph_enhanced/copy-commit-results.cjs
+
+--- 呼び出し元
+# 呼び出し元ワークフロー: call-callgraph_enhanced.yml
+name: Call Call Graph Enhanced
+
+on:
+  schedule:
+    # 毎日午前5時(JST) = UTC 20:00前日
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+jobs:
+  call-callgraph-enhanced:
+    # uses: cat2151/github-actions/.github/workflows/callgraph_enhanced.yml
+    uses: ./.github/workflows/callgraph_enhanced.yml # ローカルでのテスト用
+```
+
+# レビュー結果OKと判断する
+- レビュー結果を人力でレビューした形になった
+
+# test
+- #4 同様にローカル WSL + act でtestする
+- エラー。userのtest設計ミス。
+  - scriptの挙動 : src/ がある前提
+  - 今回の共通ワークフローのリポジトリ : src/ がない
+  - 今回testで実現したいこと
+    - 仮のソースでよいので、関数コールグラフを生成させる
+  - 対策
+    - src/ にダミーを配置する
+- test green
+  - ただしcommit pushはしてないので、html内容が0件NG、といったケースの検知はできない
+  - もしそうなったら別issueとしよう
+
+# test green
+
+# commit用に、yml 呼び出し元 uses をlocal用から本番用に書き換える
+
+# closeとする
+- もしhtml内容が0件NG、などになったら、別issueとするつもり
+
+{% endraw %}
+```
+
+### issue-notes/2.md
+```md
+{% raw %}
+# issue readmeに、easyな説明表示の案を追加する。あわせて着手優先度を整理する #2
+[issues #2](https://github.com/cat2151/super-easy-vim/issues/2)
+
+# easyな説明表示の案
+- 画面を2分割する
+- 左
+  - textarea
+- 右
+  - modeに応じた、次の一手を過激に派手に表示する
+- メリット
+  - vimのこれまでの課題であった、「次の一手がわからない」を対策する
+- デメリット
+  - 表示領域が狭くなる
+    - 対策、アプリ方針に従い、OKとする
+  - バルーンやポップアップ表示に比べて利便性や見た目の楽しさが減るリスクがある
+    - 対策、バルーンやポップアップは複雑で、検証結果が得られるまで時間がかかる可能性がある
+      - それよりはすぐこの方式で検証結果を得るほうがトータルで速い、と判断する
+
+# 着手優先度
+- 上記案を次に着手するのがよいと判断する
+- 実際には、
+  - 初手からいきなりagentに任せて、それをuserがみて検証してヒントにするか、
+  - 具体的に何を表示するかをlistし、一歩ずつやっていくか、
+  - agentにplanさせるか
+  - を試す。planが無難かもしれない
+
+# readmeの整理
+- 上記をreadmeに反映、あるいはroadmap.md的なものをつくり、readme先頭からlinkか
+
+
+{% endraw %}
+```
+
+### .github/actions-tmp/issue-notes/3.md
+```md
+{% raw %}
+# issue GitHub Actions「issue note生成」を共通ワークフロー化する #3
+[issues #3](https://github.com/cat2151/github-actions/issues/3)
+
+- 前提
+  - userは、translateのworkflowを共通ワークフロー化し、動くようにしたので、共通ワークフロー化の知識がある
+  - よって、今回は、promptでplanさせ、そのplanをuserがレビューし、planの改善を指示できるので、ハルシネーションのリスクを下げることができる
+
+- prompt
+```
+あなたはGitHub Actionsと共通ワークフローのスペシャリストです。
+このymlはまだ共通ワークフロー化されず、
+呼び出し元からコピーされたままの状態です。
+このymlファイル名のまま、
+中身を共通ワークフロー化してください。
+呼び出し元ymlは別途書きますので気にしないでください。
+まずplanしてください
+```
+
+- plan 生成結果
+```
+共通ワークフロー化のためのplanは以下の通りです。
+
+1. 目的
+現在の issue-note.yml を「共通ワークフロー」として再設計し、他リポジトリや他ワークフローから workflow_call で呼び出せるようにする。
+2. 主な変更点
+on: トリガーを workflow_call に変更（直接イベントで起動しない）。
+必要な入力（inputs）やシークレット（secrets）を workflow_call セクションで定義。
+github.event.issue などのイベント依存部分を、inputs経由で受け取る形に修正。
+既存の処理（issueノート生成、コミット、issue body更新）はそのまま活かすが、パラメータ化する。
+3. 具体的な修正内容
+on: issues: → on: workflow_call: に変更。
+inputs で必要な値（例: issue_title, issue_number, issue_body, issue_url など）を受け取る。
+スクリプト内の ${{ github.event.issue.xxx }} を ${{ inputs.xxx }} に置換。
+github-script ステップも同様にinputsを参照。
+必要に応じて secrets も workflow_call で受け取れるようにする。
+4. ファイル名・配置
+ファイル名はそのまま issue-note.yml。
+配置場所は workflows でOK（共通ワークフローとしてもこの場所で良い）。
+5. 呼び出し元への影響
+呼び出し元ワークフローで uses: <repo>/.github/workflows/issue-note.yml@main のように参照し、inputsを渡す形になる。
+このplanで進めます。次に、実際の共通ワークフロー化のためのyml修正案を作成しますか？
+```
+
+- userがplanレビューし、OKを出した
+- agentに生成結果ymlをレビューさせた、OKとなった
+  - userはこのレビューは認知負荷が高いのでskipとする（単純な細かい間違い探し作業になるので、それはagentに任せた）
+-  エラー。呼び出し元ymlのエラーがあり修正。共通ワークフローのエラー指摘があり、共通ワークフロー側の修正が必要となった
+```
+原因の分析：
+
+呼び出し元（tonejs-mml-to-jsonのissue-note.yml）は、reusable workflow（cat2151/github-actions/.github/workflows/issue-note.yml@main）をusesで呼び出し、inputsをwithで渡しています。
+共通ワークフロー（reusable workflow）は inputs を workflow_call で受け取り、各ステップで ${{ inputs.xxx }} で参照しています。
+しかし、エラーが発生したのは actions/github-script@v7 の script 内です。
+エラーの本質的な原因：
+
+actions/github-script の script: で ${{ inputs.issue_number }} のような式を直接 JavaScript テンプレートリテラル内で使っていますが、これはサポートされていません。
+script: の中は JavaScript であり、YAMLの ${{ ... }} は展開されません（または意図通りに展開されません）。
+そのため、inputs 変数は script 内の JavaScript で未定義となり、ReferenceError になります。
+正しい書き方：
+
+actions/github-script の script: でワークフローの inputs を使いたい場合は、with: で input を environment 変数や script の引数として渡し、JavaScript で process.env から取得するか、github-script の input 機能を使う必要があります。
+例（修正版）：
+
+このように、inputs の値を env で渡し、script 内では process.env で参照してください。
+
+まとめ：
+
+actions/github-script の script 内で ${{ inputs.xxx }} を直接使うと ReferenceError になる
+env: で値を渡し、process.env で参照するのが正しい
+修正が必要です。修正版のワークフローが必要な場合はお知らせください。
+```
+
+- test green
+- closeとする
+
+{% endraw %}
+```
+
+### issue-notes/3.md
+```md
+{% raw %}
+# issue （user手作業）readmeをもっとコンパクトにするため、内容をグルーピングして別mdに切り分ける、例えばclaude生成結果を別mdに切り分ける #3
+[issues #3](https://github.com/cat2151/super-easy-vim/issues/3)
+
+# なにが困るの？
+- readmeがパッと見で長くて目が滑る
+- readmeのうち、なにが重要か？がパッと見でわからない
+
+
+{% endraw %}
+```
 
 ## 最近の変更（過去7日間）
 ### コミット履歴:
-52e1324 github-actionsリポジトリの共通ワークフローを導入
-bd7cb05 Expand README with mission system brainstorming
-e9c80dc README.mdのクイックスタートセクションを整理し、ビルドおよび実行方法を明確化。copilot-instructions.mdを新規作成し、プロジェクトの概要、アーキテクチャ、技術スタック、開発ワークフロー、実装パターン、将来の機能計画を詳細に記述。
-b3cf51a jekyll settings
-d925500 Merge pull request #1 from cat2151/copilot/create-tui-editor-with-rust
-76a95db Merge branch 'main' into copilot/create-tui-editor-with-rust
-d3c20f4 Update README with project status and outlook
-655d526 Update README with WIP and SUPER EASY VIM details
-af69557 Add Rust TUI editor with vim-like controls
-ebcb667 Update README with agent instructions for TUI editor
+7dbf8ab #3 Document issues with README length and clarity
+7dd953a Add issue note for #3 [auto]
+2aaae2d #2 Update issue notes with explanation display proposal
+2cb6be7 Add issue note for #2 [auto]
 
 ### 変更されたファイル:
-.github/copilot-instructions.md
 .github/workflows/call-daily-project-summary.yml
 .github/workflows/call-issue-note.yml
 .github/workflows/call-translate-readme.yml
-Cargo.lock
-Cargo.toml
 README.md
-_config.yml
-src/main.rs
+generated-docs/development-status-generated-prompt.md
+generated-docs/development-status.md
+generated-docs/project-overview-generated-prompt.md
+generated-docs/project-overview.md
+issue-notes/2.md
+issue-notes/3.md
 
 
 ---
-Generated at: 2025-11-10 08:25:42 JST
+Generated at: 2025-12-29 07:03:54 JST
