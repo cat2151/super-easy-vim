@@ -1,4 +1,4 @@
-Last updated: 2025-12-29
+Last updated: 2026-02-24
 
 # 開発状況生成プロンプト（開発者向け）
 
@@ -109,6 +109,7 @@ Last updated: 2025-12-29
 - .github/actions-tmp/.github/workflows/call-rust-windows-check.yml
 - .github/actions-tmp/.github/workflows/call-translate-readme.yml
 - .github/actions-tmp/.github/workflows/callgraph.yml
+- .github/actions-tmp/.github/workflows/check-large-files.yml
 - .github/actions-tmp/.github/workflows/check-recent-human-commit.yml
 - .github/actions-tmp/.github/workflows/daily-project-summary.yml
 - .github/actions-tmp/.github/workflows/issue-note.yml
@@ -131,6 +132,9 @@ Last updated: 2025-12-29
 - .github/actions-tmp/.github_automation/callgraph/scripts/find-process-results.cjs
 - .github/actions-tmp/.github_automation/callgraph/scripts/generate-html-graph.cjs
 - .github/actions-tmp/.github_automation/callgraph/scripts/generateHTML.cjs
+- .github/actions-tmp/.github_automation/check-large-files/README.md
+- .github/actions-tmp/.github_automation/check-large-files/check-large-files.toml.example
+- .github/actions-tmp/.github_automation/check-large-files/scripts/check_large_files.py
 - .github/actions-tmp/.github_automation/check_recent_human_commit/scripts/check-recent-human-commit.cjs
 - .github/actions-tmp/.github_automation/project_summary/docs/daily-summary-setup.md
 - .github/actions-tmp/.github_automation/project_summary/prompts/development-status-prompt.md
@@ -187,7 +191,11 @@ Last updated: 2025-12-29
 - .github/actions-tmp/issue-notes/29.md
 - .github/actions-tmp/issue-notes/3.md
 - .github/actions-tmp/issue-notes/30.md
+- .github/actions-tmp/issue-notes/35.md
+- .github/actions-tmp/issue-notes/38.md
 - .github/actions-tmp/issue-notes/4.md
+- .github/actions-tmp/issue-notes/40.md
+- .github/actions-tmp/issue-notes/42.md
 - .github/actions-tmp/issue-notes/7.md
 - .github/actions-tmp/issue-notes/8.md
 - .github/actions-tmp/issue-notes/9.md
@@ -577,16 +585,10 @@ env: で値を渡し、process.env で参照するのが正しい
 
 ## 最近の変更（過去7日間）
 ### コミット履歴:
-7dbf8ab #3 Document issues with README length and clarity
-7dd953a Add issue note for #3 [auto]
-2aaae2d #2 Update issue notes with explanation display proposal
-2cb6be7 Add issue note for #2 [auto]
+afb9ace jeykyll用config
 
 ### 変更されたファイル:
-.github/workflows/call-daily-project-summary.yml
-.github/workflows/call-issue-note.yml
-.github/workflows/call-translate-readme.yml
-README.md
+_config.yml
 generated-docs/development-status-generated-prompt.md
 generated-docs/development-status.md
 generated-docs/project-overview-generated-prompt.md
@@ -596,4 +598,4 @@ issue-notes/3.md
 
 
 ---
-Generated at: 2025-12-29 07:03:54 JST
+Generated at: 2026-02-24 07:14:48 JST
